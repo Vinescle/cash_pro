@@ -1,0 +1,92 @@
+body {
+  background: linear-gradient(-45deg, #0d6efd, #6610f2, #6f42c1, #0dcaf0);
+  background-size: 400% 400%;
+  animation: gradientAnim 15s ease infinite;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+@keyframes gradientAnim {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.logo-container {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.logo-container h1 {
+  color: white;
+  font-size: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn-custom {
+  width: 220px;
+  height: 60px;
+  font-size: 18px;
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-custom:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.6), 0 8px 16px rgba(0, 0, 0, 0.3);
+  background-color: #ffffff;
+  color: #0d6efd;
+}
+
+.btn-danger:hover {
+  background-color: #dc3545 !important;
+  color: white !important;
+  box-shadow: 0 0 15px rgba(220, 53, 69, 0.6), 0 8px 16px rgba(0, 0, 0, 0.3);
+  transform: scale(1.05);
+}
+
+.btn-icon {
+  font-size: 22px;
+}
+
+.card-glass {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 40px 30px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
