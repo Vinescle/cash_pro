@@ -59,25 +59,33 @@
 
     function converterBRLparaBTC() {
       const valor = parseFloat(document.getElementById('valor-brl').value);
-      if (isNaN(valor) || valor <= 0 || !cotacaoAtual) {
-        mostrarResultado('Valor inválido');
-        return;
-      }
-      const resultado = valor / cotacaoAtual;
-      mostrarResultado(`Você receberia aproximadamente ${resultado.toFixed(8)} BTC`);
+      fetch(`/calcula/${valor}/${cotacaoAtual}`)
+        .then(res => res.json())
+        .then(data => {
+          if (data.error) {
+            mostrarResultado('Erro ao calcular');
+          } else {
+            mostrarResultado(`Você receberia aproximadamente ${data.result.toFixed(8)} BTC`);
+          }
+        })
+        .catch(() => mostrarResultado('Erro ao calcular'));
     }
 
     function converterBTCparaBRL() {
       const valor = parseFloat(document.getElementById('valor-btc').value);
-      if (isNaN(valor) || valor <= 0 || !cotacaoAtual) {
-        mostrarResultado('Valor inválido');
-        return;
-      }
-      const resultado = valor * cotacaoAtual;
-      mostrarResultado(`Você receberia aproximadamente ${resultado.toLocaleString('pt-BR', {
-        style: 'currency',
-        currency: 'BRL'
-      })}`);
+      fetch(`/calcula_brl/${valor}`)
+        .then(res => res.json())
+        .then(data => {
+          if (data.error) {
+            mostrarResultado('Erro ao calcular');
+          } else {
+            mostrarResultado(`Você receberia aproximadamente ${data.result.toLocaleString('pt-BR', {
+              style: 'currency',
+              currency: 'BRL'
+            })}`);
+          }
+        })
+        .catch(() => mostrarResultado('Erro ao calcular'));
     }
 
     window.onload = buscarCotacao;
