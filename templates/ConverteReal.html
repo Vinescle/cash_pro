@@ -73,7 +73,7 @@
 
     function converterBTCparaBRL() {
       const valor = parseFloat(document.getElementById('valor-btc').value);
-      fetch(`/calcula_brl/${valor}`)
+      fetch(`/calcula/${valor}`)
         .then(res => res.json())
         .then(data => {
           if (data.error) {
