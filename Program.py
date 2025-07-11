@@ -33,15 +33,16 @@ def PrecoBtc():
     'btc_mes_passado': float(Antigo)
   })
 
-@Program.route('/calcula/<float:valorBRL>/<float:cotacao>', methods=['GET'])
-def calculaBRLparaBTC(valorBRL, cotacao):
+@Program.route('/calcula/<float:valorBRL>', methods=['GET'])
+def calculaBRLparaBTC(valorBRL):
   try:
-    resultado = valorBRL / cotacao
+    preco_atual = BuscaPrecoBtc()
+    resultado = valorBRL / float(preco_atual[0])
     return jsonify({'result': resultado})
   except Exception as e:
     return jsonify({'error': 'Erro ao calcular', 'detalhe': str(e)}), 400
 
-@Program.route('/calcula/<float:valorBTC>', methods=['GET'])
+@Program.route('/calcula_Brl/<float:valorBTC>', methods=['GET'])
 def calculaBTCparaBRL(valorBTC):
   try:
     preco_atual = BuscaPrecoBtc()

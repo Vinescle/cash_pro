@@ -58,8 +58,8 @@
     }
 
     function converterBRLparaBTC() {
-      const valor = parseFloat(document.getElementById('valor-brl').value);
-      fetch(`/calcula/${valor}/${cotacaoAtual}`)
+      const valor = parseFloat(document.getElementById('valor-brl').value).toFixed(2);
+      fetch(`/calcula/${valor}`)
         .then(res => res.json())
         .then(data => {
           if (data.error) {
@@ -72,8 +72,9 @@
     }
 
     function converterBTCparaBRL() {
-      const valor = parseFloat(document.getElementById('valor-btc').value);
-      fetch(`/calcula/${valor}`)
+      var valor = parseFloat(document.getElementById('valor-btc').value);
+      if (Number.isInteger(valor)) { valor = valor.toFixed(2); };
+      fetch(`/calcula_Brl/${valor}`)
         .then(res => res.json())
         .then(data => {
           if (data.error) {
