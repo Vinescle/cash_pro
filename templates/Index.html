@@ -24,8 +24,8 @@
     </div>
 
     <div class="btn-container">
-      <button class="btn btn-light btn-custom">
-        <i class="fas fa-coins btn-icon"></i> BRL para BTC
+      <button class="btn btn-light btn-custom" onclick="window.location.href='./ConverteReal.html'">
+        <i class=" fas fa-coins btn-icon"></i> BRL para BTC
       </button>
       <button class="btn btn-light btn-custom">
         <i class="fas fa-dollar-sign btn-icon"></i> BTC para BRL
@@ -46,20 +46,20 @@
       fetch('/preco')
         .then(res => res.json())
         .then(data => {
-          const precoAtual = data.btc_atual;
-          const precoAntigo = data.btc_mes_passado;
+          const cotacaoAtual = data.btc_atual;
+          const cotacaoAntiga = data.btc_mes_passado;
 
-          const precoFormatado = precoAtual.toLocaleString('pt-BR', {
+          const precoFormatado = cotacaoAtual.toLocaleString('pt-BR', {
             style: 'currency',
             currency: 'BRL'
           });
 
-          const valorAntigoFormatado = precoAntigo.toLocaleString('pt-BR', {
+          const valorAntigoFormatado = cotacaoAntiga.toLocaleString('pt-BR', {
             style: 'currency',
             currency: 'BRL'
           });
 
-          const cor = precoAtual >= precoAntigo ? 'limegreen' : 'lightcoral';
+          const cor = cotacaoAtual >= cotacaoAntiga ? 'limegreen' : 'lightcoral';
 
           const precoAtualizado = document.getElementById('btc-valor');
           const precoLegenda = document.getElementById('btc-legenda')
